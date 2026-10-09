@@ -1,12 +1,17 @@
 import pywal
+from pathlib import Path
 
-wallpaper_path = "../../../public/images/wallpaper/"
+wallpaper_path = Path("../../../public/images/wallpaper/")
+wallpaper_name = ""
 css_source_path = "../../css/colors/"
 json_source_path = "../../data/json/colors/"
 
-wallpaper_name = "a_snowy_landscape_with_trees_and_a_light_on_it.jpg"
+for wallpaper in wallpaper_path.iterdir():
+    wallpaper_name = wallpaper
 
-color_generation = pywal.colors.get(wallpaper_path + wallpaper_name)
+print(wallpaper_name)
+
+color_generation = pywal.colors.get(str(wallpaper_name))
 
 special_colors = color_generation["special"]
 main_colors = color_generation["colors"]
